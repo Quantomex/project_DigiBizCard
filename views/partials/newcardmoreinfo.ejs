@@ -1,0 +1,132 @@
+<style>
+  .inconsContainer button {
+    background-color: transparent;
+    border: none;
+  }
+
+</style>
+<div class="moreInfoContainer">
+  <h4 class="containerHeading">Add more information</h4>
+  <div class="inconsContainer">
+    <button id="contact" onclick="addMore('Contact +94-XXXXXXXXX', 'tel','contact')" class="icons">
+      <i class='bx bxs-phone'></i>
+      <p class="iconText">Phone</p>
+    </button>
+    <button id="email" onclick="addMore('example@example.com', 'email','email')" class="icons">
+      <i class='bx bxs-envelope'></i>
+      <p class="iconText">Email</p>
+    </button>
+    <button id="address" onclick="addMore('Address', 'text','address')" class="icons">
+      <i class='bx bxs-location-plus'></i>
+      <p class="iconText">Address</p>
+    </button>
+    <button id="website" onclick="addMore('https://example.com', 'text','website')" class="icons">
+      <i class='bx bx-laptop'></i>
+      <p class="iconText">Website</p>
+    </button>
+    <button id="link" onclick="addMore('Any link', 'text','link')" class="icons">
+      <i class='bx bx-link-alt'></i>
+      <p class="iconText">Link</p>
+    </button>
+    <button id="pdflink" onclick="addMore('PDF link','text','pdflink')" class="icons">
+      <i class='bx bxs-file-pdf'></i>
+      <p class="iconText">Company Broucher</p>
+    </button>
+    <button id="twitter" onclick="addMore('Twitter username', 'text','twitter')" class="icons">
+      <i class='bx bxl-twitter'></i>
+      <p class="iconText">Twitter</p>
+    </button>
+    <button id="instagram" onclick="addMore('Instagram username', 'text','instagram')" class="icons">
+      <i class='bx bxl-instagram'></i>
+      <p class="iconText">Instagram</p>
+    </button>
+    <button id="linkedIn" onclick="addMore('LinkedIn username', 'text','linkedIn')" class="icons">
+      <i class='bx bxl-linkedin'></i>
+      <p class="iconText">LinkedIn</p>
+    </button>
+    <button id="facebook" onclick="addMore('Facebook username', 'text','facebook')" class="icons">
+      <i class='bx bxl-facebook-circle'></i>
+      <p class="iconText">Facebook</p>
+    </button>
+    <button id="youtube" onclick="addMore('Youtube channel url', 'text','youtube')" class="icons">
+      <i class='bx bxl-youtube'></i>
+      <p class="iconText">Youtube</p>
+    </button>
+    <button id="whatsapp" onclick="addMore('Whatsapp contact +94-XXXXXXXXX', 'tel','whatsapp')" class="icons">
+      <i class='bx bxl-whatsapp'></i>
+      <p class="iconText">Whatsapp</p>
+    </button>
+    <button id="snapchat" onclick="addMore('Snapchat username', 'text','snapchat')" class="icons">
+      <i class='bx bxl-snapchat'></i>
+      <p class="iconText">Snapchat</p>
+    </button>
+    <button id="tiktok" onclick="addMore('TikTok username', 'text','tiktok')" class="icons">
+      <i class='bx bxl-tiktok'></i>
+      <p class="iconText">TikTok</p>
+    </button>
+    <button id="github" onclick="addMore('Github username', 'text','github')" class="icons">
+      <i class='bx bxl-github'></i>
+      <p class="iconText">Github</p>
+    </button>
+    <button id="yelp" onclick="addMore('Yelp username', 'text','yelp')" class="icons">
+      <i class='bx bxl-yelp'></i>
+      <p class="iconText">Yelp</p>
+    </button>
+    <button id="venmo" onclick="addMore('Venmo username', 'text','venmo')" class="icons">
+      <i class='bx bxl-venmo'></i>
+      <p class="iconText">Venmo</p>
+    </button>
+    <button id="discord" onclick="addMore('Discord username', 'text','discord')" class="icons">
+      <i class='bx bxl-discord-alt'></i>
+      <p class="iconText">Discord</p>
+    </button>
+    <button id="twitch" onclick="addMore('Twitch username', 'text','twitch')" class="icons">
+      <i class='bx bxl-twitch'></i>
+      <p class="iconText">Twitch</p>
+    </button>
+    <button id="telegram" onclick="addMore('Telegram username', 'text','telegram')" class="icons">
+      <i class='bx bxl-telegram'></i>
+      <p class="iconText">Telegram</p>
+    </button>
+    <button id="skype" onclick="addMore('Skype username', 'text','skype')" class="icons">
+      <i class='bx bxl-skype'></i>
+      <p class="iconText">Skype</p>
+    </button>
+    <button id="xing" onclick="addMore('Xing username', 'text','xing')" class="icons">
+      <i class='bx bxl-xing'></i>
+      <p class="iconText">Xing</p>
+    </button>
+    <button id="dribble" onclick="addMore('Drible username', 'text','dribble')" class="icons">
+      <i class='bx bxl-dribbble'></i>
+      <p class="iconText">Dribble</p>
+    </button>
+    <button id="behance" onclick="addMore('Behance username', 'text','behance')" class="icons">
+      <i class='bx bxl-behance'></i>
+      <p class="iconText">Behance</p>
+    </button>
+    <button id="pinterest" onclick="addMore('Pinterest username', 'text','pinterest')" class="icons">
+      <i class='bx bxl-pinterest'></i>
+      <p class="iconText">Pinterest</p>
+    </button>
+    <button id="patreon" onclick="addMore('Patreon username', 'text','patreon')" class="icons">
+      <i class='bx bxl-patreon'></i>
+      <p class="iconText">Patreon</p>
+    </button>
+    <button id="vimeo" onclick="addMore('Vimeo username', 'text','vimeo')" class="icons">
+      <i class='bx bxl-vimeo'></i>
+      <p class="iconText">Vimeo</p>
+    </button>
+    <button id="appleMusic" onclick="addMore('Apple Music username', 'text','appleMusic')" class="icons">
+      <i class='bx bxl-apple'></i>
+      <p class="iconText">AppleMusic</p>
+    </button>
+    <button id="spotify" onclick="addMore('Spotify username', 'text','spotify')" class="icons">
+      <i class='bx bxl-spotify'></i>
+      <p class="iconText">Spotify</p>
+    </button>
+    <button id="soundCloud" onclick="addMore('SoundCloud username', 'text','soundCloud')" class="icons">
+      <i class='bx bxl-soundcloud'></i>
+      <p class="iconText">SoundCloud</p>
+    </button>
+  </div>
+</div>

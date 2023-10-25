@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/loginStyles.css" rel="stylesheet" type="text/css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <title>Sign up</title>
+</head>
+
+<body>
+  <div class='loginScreen'>
+    <div class='boxContainer'>
+      <image class='loginLogo' src="/images/logo.png" />
+      <h2 class='loginHeading'>Sign up as Admin</h2>
+      <form action="/admin/signup" method='POST' class='inputContainer' novalidate>
+        <%- include('partials/flash') %>
+        <label class='labelStyle form-label' for='username'>Enter your Email</label>
+        <input id="username" name='username' class='inputStyle form-control mb-2' type='text' id='username' required />
+        <div class="invalid-feedback mt-0 mb-3">
+          Username is required
+        </div>
+        <label class='labelStyle form-label' for='password'>Enter your Password</label>
+        <input minlength="8" value="" id="password" name='password' class='inputStyle form-control mb-2' type='password' id='password' required />
+        <div class="invalid-feedback mt-0 mb-3">
+          Password is required minimum 8 characters.
+        </div>
+        <div class='showPasscontainer'>
+          <input id="showPassBtn" class='showpassword form-check-input' type='checkbox' />
+          <label class='showpassText form-check-label'>show password</label>
+        </div>
+        <button id="submitButton" class="activeBtn" type='submit'>Create account</button>
+      </form>
+      <p class='signupPara'>Already have an account?<a href='/admin/login'>Login</a></p>
+    </div>
+  </div>
+</body>
+<script>
+  (() => {
+    'use strict'
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll('.inputContainer')
+
+    // Loop over them and prevent submission
+    Array.from(forms)
+      .forEach(form => {
+        form.addEventListener('submit', event => {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+
+          form.classList.add('was-validated')
+        }, false)
+      })
+  })()
+
+</script>
+<script src="/javascripts/signup.js"></script>
+
+</html>

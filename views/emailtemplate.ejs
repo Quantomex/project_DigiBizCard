@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+</head>
+<style>
+  .viewBtnStyles {
+    padding: 7px 15px;
+    text-decoration: none;
+    text-transform: uppercase;
+    background-color: blueviolet;
+    color: white;
+    border-radius: 5px;
+  }
+
+</style>
+
+<body>
+  <% if(emailMessage) {%>
+  <p><%= emailMessage %></p>
+  <% }else{ %>
+  <p>Hi,<br>Here's <%= name %>'s digital business card. You can send a message to <%= name %> by replying to this email.</p>
+  <% } %>
+  <div class="cardFrontContainer" style="width: 400px; height: auto; padding-bottom: 20px; display: flex; flex-direction: column; background-color: white; margin-right: 10px; margin-left: 20px; border-radius: 20px; text-decoration: none; transition: all 0.1s ease-in-out; cursor: pointer; transition: all 0.1s ease-in-out; box-shadow: 0px 3px 9px 0px rgba(0, 0, 0, 0.3); -webkit-box-shadow: 0px 3px 9px 0px rgba(0, 0, 0, 0.3); -moz-box-shadow: 0px 3px 9px 0px rgba(0, 0, 0, 0.3);">
+    <% if (!card.image.url) {%>
+    <div style="height: 160px; width: 400px; border-top-left-radius: 15px; border-top-right-radius: 15px; background-color: <%=card.color%>;" class="bg"></div>
+    <% }else {%>
+    <img class="cardImgStyles" src="<%= card.image.url%>" style="height: 250px; width: 400px; object-fit: cover; border-top-left-radius: 15px; border-top-right-radius: 15px;" width="400" height="250">
+    <% } %>
+    <div class="svgContainer" style="margin-top: -1px; width: 100%;">
+      <svg style="width: 100%;" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 1440 320">
+        <path fill="<%=card.color%>" fill-opacity="1" d="M0,192L60,181.3C120,171,240,149,360,170.7C480,192,600,256,720,256C840,256,960,192,1080,165.3C1200,139,1320,149,1380,154.7L1440,160L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z" />
+
+      </svg>
+    </div>
+    <div class="textContainer" style="width: 100%; margin-left: 20px; border-left: 1px dotted black; padding-left: 20px; cursor: default;">
+      <h3 class="fullname" style="font-weight: bold; width: 300px;">
+        <%= card.fullname %>
+        <%= card.suffix %>
+        <% if(card.maidenName) { %>
+        (<%= card.maidenName %>)
+        <% }%> <span style="font-size: 20px; font-weight: 200;">
+          <%=card.accreditations %>
+        </span>
+      </h3>
+      <h4>
+        <%= card.title %>
+      </h4>
+      <h4 style="font-size: 24px; font-weight: 500; color: <%=card.color%>;" class="department">
+        <%= card.department %>
+      </h4>
+      <h4 class="company" style="font-size: 24px; font-weight: 400; font-style: italic;">
+        <%= card.company %>
+      </h4>
+    </div>
+    <div class="headlineContainer" style="padding-left: 20px; margin-top: 10px; cursor: default;">
+      <p class="headline" style="font-size: 18px; font-weight: 400; margin-bottom: 0;">
+        <%= card.headline %>
+      </p>
+    </div>
+    <% if(card.prefferedName || card.pronouns) {%>
+    <div class="prefferdNameContainer" style="padding-left: 20px; margin-top: 10px; display: flex; flex-direction: row; align-items: center; cursor: default;">
+      <i class="bx bxs-comment-dots" style="color: #817c7c; margin: 0; margin-right: 5px; font-size: 18px;"></i>
+      <p class="textContent" style="font-size: 18px; color: #817c7c; margin: 0;">
+        Goes by <strong>
+          <%= card.prefferedName %>
+        </strong>
+        <% if(card.pronouns) {%>
+        (<%= card.pronouns %>)
+        <% } %>
+      </p>
+    </div>
+    <% } %>
+    <div class="additionInfo" style="display: flex; flex-direction: column; width: 100%; margin-top: 30px;">
+      <% if(card.email){ %>
+      <a href="mailto:<%= card.email %>" class="additional" style="display: flex; align-items: center; padding: 6px 20px; text-decoration: none; color: black;">
+        <i style="font-size: 20px; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; background-color: <%=card.color%>;" class="bx bxs-envelope"></i>
+        <h5 class="additionalText" style="margin-left: 10px; font-weight: normal;">
+          <%= card.email %>
+        </h5>
+      </a>
+      <% } %>
+      <% if(card.contact){ %>
+      <a href="tel:+94<%= card.contact %>" class="additional" style="display: flex; align-items: center; padding: 6px 20px; text-decoration: none; color: black;">
+        <i style="font-size: 20px; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; background-color: <%=card.color%>;" class="bx bxs-phone"></i>
+        <h5 class="additionalText" style="margin-left: 10px; font-weight: normal;">
+          +94 <%= card.contact %>
+        </h5>
+      </a>
+      <% } %>
+      <% if(card.address) {%>
+      <div class="additional" style="display: flex; align-items: center; padding: 6px 20px; text-decoration: none; color: black;">
+        <i style="font-size: 20px; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; background-color: <%=card.color%>;" class="bx bx-location-plus"></i>
+        <h5 class="additionalText" style="margin-left: 10px; font-weight: normal;">
+          <%= card.address %>
+        </h5>
+      </div>
+      <% } %>
+      <% if(card.website) {%>
+      <a target="_blank" href="<%= card.website %>" class="additional" style="display: flex; align-items: center; padding: 6px 20px; text-decoration: none; color: black;">
+        <i style="font-size: 20px; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; background-color: <%=card.color%>;" class="bx bx-laptop"></i>
+        <h5 class="additionalText" style="margin-left: 10px; font-weight: normal;">
+          My Website
+        </h5>
+      </a>
+      <% } %>
+      <% if(card.link) {%>
+      <a target="_blank" href="<%= card.link %>" class="additional" style="display: flex; align-items: center; padding: 6px 20px; text-decoration: none; color: black;">
+        <i style="font-size: 20px; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; background-color: <%=card.color%>;" class="bx bx-link-alt"></i>
+        <h5 class="additionalText" style="margin-left: 10px; font-weight: normal;">
+          My Link
+        </h5>
+      </a>
+      <% } %>
+      <% if(card.twitter) {%>
+      <a target="_blank" href="https://twitter.com/<%= card.twitter %>" class="additional" style="display: flex; align-items: center; padding: 6px 20px; text-decoration: none; color: black;">
+        <i style="font-size: 20px; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; background-color: <%=card.color%>;" class="bx bxl-twitter"></i>
+        <h5 class="additionalText" style="margin-left: 10px; font-weight: normal;">
+          Twitter
+        </h5>
+      </a>
+      <% } %>
+      <% if(card.instagram) {%>
+      <a target="_blank" href="https://www.instagram.com/<%= card.instagram %>" class="additional" style="display: flex; align-items: center; padding: 6px 20px; text-decoration: none; color: black;">
+        <i style="font-size: 20px; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; background-color: <%=card.color%>;" class="bx bxl-instagram"></i>
+        <h5 class="additionalText" style="margin-left: 10px; font-weight: normal;">
+          Instagram
+        </h5>
+      </a>
+      <% } %>
+      <% if(card.linkedIn) {%>
+      <a target="_blank" href="https://www.linkedin.com/in/<%= card.linkedIn %>/" class="additional" style="display: flex; align-items: center; padding: 6px 20px; text-decoration: none; color: black;">
+        <i style="font-size: 20px; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; background-color: <%=card.color%>;" class="bx bxl-linkedin"></i>
+        <h5 class="additionalText" style="margin-left: 10px; font-weight: normal;">
+          LinkedIn
+        </h5>
+      </a>
+      <% } %>
+      <% if(card.facebook) {%>
+      <a target="_blank" href="https://www.facebook.com/<%= card.facebook %>" class="additional" style="display: flex; align-items: center; padding: 6px 20px; text-decoration: none; color: black;">
+        <i style="font-size: 20px; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; background-color: <%=card.color%>;" class="bx bxl-facebook"></i>
+        <h5 class="additionalText" style="margin-left: 10px; font-weight: normal;">
+          Facebook
+        </h5>
+      </a>
+      <% } %>
+      <% if(card.youtube) {%>
+      <a target="_blank" href="<%= card.youtube %>" class="additional" style="display: flex; align-items: center; padding: 6px 20px; text-decoration: none; color: black;">
+        <i style="font-size: 20px; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; background-color: <%=card.color%>;" class="bx bxl-youtube"></i>
+        <h5 class="additionalText" style="margin-left: 10px; font-weight: normal;">
+          Youtube
+        </h5>
+      </a>
+      <% } %>
+      <% if(card.whatsapp) {%>
+      <a target="_blank" href="https://api.whatsapp.com/send?phone=92<%= card.whatsapp %>" class="additional" style="display: flex; align-items: center; padding: 6px 20px; text-decoration: none; color: black;">
+        <i style="font-size: 20px; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; background-color: <%=card.color%>;" class="bx bxl-whatsapp"></i>
+        <h5 class="additionalText" style="margin-left: 10px; font-weight: normal;">
+          Whatsapp
+        </h5>
+      </a>
+      <% } %>
+      <% if(card.snapchat) {%>
+      <a target="_blank" href="https://www.snapchat.com/add/<%= card.snapchat %>" class="additional" style="display: flex; align-items: center; padding: 6px 20px; text-decoration: none; color: black;">
+        <i style="font-size: 20px; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; background-color: <%=card.color%>;" class="bx bxl-snapchat"></i>
+        <h5 class="additionalText" style="margin-left: 10px; font-weight: normal;">
+          Snapchat
+        </h5>
+      </a>
+      <% } %>
+      <% if(card.tiktok) {%>
+      <a target="_blank" href="https://www.tiktok.com/@<%= card.tiktok %>" class="additional" style="display: flex; align-items: center; padding: 6px 20px; text-decoration: none; color: black;">
+        <i style="font-size: 20px; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; background-color: <%=card.color%>;" class="bx bxl-tiktok"></i>
+        <h5 class="additionalText" style="margin-left: 10px; font-weight: normal;">
+          TikTok
+        </h5>
+      </a>
+      <% } %>
+      <% if(card.github) {%>
+      <a target="_blank" href="https://github.com/<%= card.github %>" class="additional" style="display: flex; align-items: center; padding: 6px 20px; text-decoration: none; color: black;">
+        <i style="font-size: 20px; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; background-color: <%=card.color%>;" class="bx bxl-github"></i>
+        <h5 class="additionalText" style="margin-left: 10px; font-weight: normal;">
+          Github
+        </h5>
+      </a>
+      <% } %>
+      <% if(card.yelp) {%>
+      <a target="_blank" href="https://www.yelp.com/user_details?userid=<%= card.yelp %>" class="additional" style="display: flex; align-items: center; padding: 6px 20px; text-decoration: none; color: black;">
+        <i style="font-size: 20px; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; background-color: <%=card.color%>;" class="bx bxl-yelp"></i>
+        <h5 class="additionalText" style="margin-left: 10px; font-weight: normal;">
+          Yelp
+        </h5>
+      </a>
+      <% } %>
+      <% if(card.venmo) {%>
+      <a target="_blank" href="https://venmo.com/<%= card.venmo %>" class="additional" style="display: flex; align-items: center; padding: 6px 20px; text-decoration: none; color: black;">
+        <i style="font-size: 20px; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; background-color: <%=card.color%>;" class="bx bxl-venmo"></i>
+        <h5 class="additionalText" style="margin-left: 10px; font-weight: normal;">
+          Venmo
+        </h5>
+      </a>
+      <% } %>
+      <% if(card.paypal) {%>
+      <a target="_blank" href="https://www.paypal.com/paypalme/<%= card.paypal %>" class="additional" style="display: flex; align-items: center; padding: 6px 20px; text-decoration: none; color: black;">
+        <i style="font-size: 20px; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; background-color: <%=card.color%>;" class="bx bxl-paypal"></i>
+        <h5 class="additionalText" style="margin-left: 10px; font-weight: normal;">
+          Paypal
+        </h5>
+      </a>
+      <% } %>
+      <% if(card.cashApp) {%>
+      <a target="_blank" href="https://cash.app/$<%= card.cashApp %>" class="additional" style="display: flex; align-items: center; padding: 6px 20px; text-decoration: none; color: black;">
+        <i style="font-size: 20px; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; background-color: <%=card.color%>;" class="bx bx-dollar"></i>
+        <h5 class="additionalText" style="margin-left: 10px; font-weight: normal;">
+          CashApp
+        </h5>
+      </a>
+      <% } %>
+      <% if(card.discord) {%>
+      <a target="_blank" href="https://cash.app/$<%= card.discord %>" class="additional" style="display: flex; align-items: center; padding: 6px 20px; text-decoration: none; color: black;">
+        <i style="font-size: 20px; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; background-color: <%=card.color%>;" class="bx bxl-discord-alt"></i>
+        <h5 class="additionalText" style="margin-left: 10px; font-weight: normal;">
+          Discord
+        </h5>
+      </a>
+      <% } %>
+      <% if(card.telegram) {%>
+      <a target="_blank" href="https://t.me/<%= card.telegram %>" class="additional" style="display: flex; align-items: center; padding: 6px 20px; text-decoration: none; color: black;">
+        <i style="font-size: 20px; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; background-color: <%=card.color%>;" class="bx bxl-telegram"></i>
+        <h5 class="additionalText" style="margin-left: 10px; font-weight: normal;">
+          Telegram
+        </h5>
+      </a>
+      <% } %>
+      <% if(card.skype) {%>
+      <a target="_blank" href="skype:<%= card.skype %>?chat" class="additional" style="display: flex; align-items: center; padding: 6px 20px; text-decoration: none; color: black;">
+        <i style="font-size: 20px; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; background-color: <%=card.color%>;" class="bx bxl-skype"></i>
+        <h5 class="additionalText" style="margin-left: 10px; font-weight: normal;">
+          Skype
+        </h5>
+      </a>
+      <% } %>
+      <% if(card.xing) {%>
+      <a target="_blank" href="https://www.xing.com/profile/<%= card.xing %>" class="additional" style="display: flex; align-items: center; padding: 6px 20px; text-decoration: none; color: black;">
+        <i style="font-size: 20px; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; background-color: <%=card.color%>;" class="bx bxl-xing"></i>
+        <h5 class="additionalText" style="margin-left: 10px; font-weight: normal;">
+          Xing
+        </h5>
+      </a>
+      <% } %>
+      <% if(card.dribble) {%>
+      <a target="_blank" href="https://dribbble.com/<%= card.dribble %>" class="additional" style="display: flex; align-items: center; padding: 6px 20px; text-decoration: none; color: black;">
+        <i style="font-size: 20px; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; background-color: <%=card.color%>;" class="bx bxl-dribbble"></i>
+        <h5 class="additionalText" style="margin-left: 10px; font-weight: normal;">
+          Dribble
+        </h5>
+      </a>
+      <% } %>
+      <% if(card.behance) {%>
+      <a target="_blank" href="https://www.behance.net/<%= card.behance %>" class="additional" style="display: flex; align-items: center; padding: 6px 20px; text-decoration: none; color: black;">
+        <i style="font-size: 20px; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; background-color: <%=card.color%>;" class="bx bxl-behance"></i>
+        <h5 class="additionalText" style="margin-left: 10px; font-weight: normal;">
+          Behance
+        </h5>
+      </a>
+      <% } %>
+      <% if(card.pinterest) {%>
+      <a target="_blank" href="https://www.pinterest.com/<%= card.pinterest %>" class="additional" style="display: flex; align-items: center; padding: 6px 20px; text-decoration: none; color: black;">
+        <i style="font-size: 20px; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; background-color: <%=card.color%>;" class="bx bxl-pinterest"></i>
+        <h5 class="additionalText" style="margin-left: 10px; font-weight: normal;">
+          Pinterest
+        </h5>
+      </a>
+      <% } %>
+      <% if(card.patreon) {%>
+      <a target="_blank" href="https://www.patreon.com/<%= card.patreon %>" class="additional" style="display: flex; align-items: center; padding: 6px 20px; text-decoration: none; color: black;">
+        <i style="font-size: 20px; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; background-color: <%=card.color%>;" class="bx bxl-patreon"></i>
+        <h5 class="additionalText" style="margin-left: 10px; font-weight: normal;">
+          Patreon
+        </h5>
+      </a>
+      <% } %>
+      <% if(card.vimeo) {%>
+      <a target="_blank" href="https://vimeo.com/<%= card.patreon %>" class="additional" style="display: flex; align-items: center; padding: 6px 20px; text-decoration: none; color: black;">
+        <i style="font-size: 20px; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; background-color: <%=card.color%>;" class="bx bxl-vimeo"></i>
+        <h5 class="additionalText" style="margin-left: 10px; font-weight: normal;">
+          Vimeo
+        </h5>
+      </a>
+      <% } %>
+      <% if(card.appleMusic) {%>
+      <a target="_blank" href="https://music.apple.com/profile/<%= card.appleMusic %>" class="additional" style="display: flex; align-items: center; padding: 6px 20px; text-decoration: none; color: black;">
+        <i style="font-size: 20px; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; background-color: <%=card.color%>;" class="bx bxl-apple"></i>
+        <h5 class="additionalText" style="margin-left: 10px; font-weight: normal;">
+          Apple Music
+        </h5>
+      </a>
+      <% } %>
+      <% if(card.spotify) {%>
+      <a target="_blank" href="https://open.spotify.com/user/<%= card.spotify %>" class="additional" style="display: flex; align-items: center; padding: 6px 20px; text-decoration: none; color: black;">
+        <i style="font-size: 20px; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; background-color: <%=card.color%>;" class="bx bxl-spotify"></i>
+        <h5 class="additionalText" style="margin-left: 10px; font-weight: normal;">
+          Spotify
+        </h5>
+      </a>
+      <% } %>
+      <% if(card.soundCloud) {%>
+      <a target="_blank" href="https://soundcloud.com/<%= card.soundCloud %>" class="additional" style="display: flex; align-items: center; padding: 6px 20px; text-decoration: none; color: black;">
+        <i style="font-size: 20px; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; background-color: <%=card.color%>;" class="bx bxl-soundcloud"></i>
+        <h5 class="additionalText" style="margin-left: 10px; font-weight: normal;">
+          Soundcloud
+        </h5>
+      </a>
+      <% } %>
+    </div>
+  </div>
+
+  <% if(card.personalLink) {%>
+  <a class="viewBtnStyles" href="digibizcard.lk/view/<%= card.personalLink %>/<%= card._id %>">view this card</a>
+
+  <% } else{%>
+  <a class="viewBtnStyles" href="digibizcard.lk/view/card/<%= card._id %>">view this card</a>
+  <% } %>
+</body>
+
+</html>

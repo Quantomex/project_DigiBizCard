@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/admindashboard.css" rel="stylesheet">
+  <title>Admin || Dashboard</title>
+</head>
+
+<body>
+  <div class="customContainer">
+    <a href="/admin/users/all/<%= currentUser._id %>" class="adminCardContainer">
+      <div class="text">
+        <p style="text-decoration: none;" class="numbers"><%= user.length %></p>
+      </div>
+      <div class="cardName">
+        <h5 class="cardNameH5">Users</h5>
+      </div>
+    </a>
+    <a href="/admin/cards/all/<%= currentUser._id %>" class="adminCardContainer">
+      <div class="text">
+        <p style="text-decoration: none;" class="numbers"><%= card.length %></p>
+      </div>
+      <div class="cardName">
+        <h5 class="cardNameH5">Cards</h5>
+      </div>
+    </a>
+    <a href="/admin/support/all/<%= currentUser._id %>" class="adminCardContainer">
+      <div class="text">
+        <p style="text-decoration: none;" class="numbers"><%= support.length %></p>
+      </div>
+      <div class="cardName">
+        <h5 class="cardNameH5">Support</h5>
+      </div>
+    </a>
+    <a href="/list/all/admin/<%= currentUser._id %>" class="adminCardContainer">
+      <div class="text">
+        <p style="text-decoration: none;" class="numbers"><%= admin.length %></p>
+      </div>
+      <div class="cardName">
+        <h5 class="cardNameH5">Admins</h5>
+      </div>
+    </a>
+    <a href="/make/account" class="adminCardContainer">
+      <div class="cardName">
+        <h5 class="cardNameH5">Make account</h5>
+      </div>
+    </a>
+  </div>
+</body>
+
+</html>

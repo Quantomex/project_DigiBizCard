@@ -1,0 +1,342 @@
+<style>
+  .inconsContainer button {
+    background-color: transparent;
+    border: none;
+  }
+
+</style>
+<div class="moreInfoContainer">
+  <h4 class="containerHeading">Add more information</h4>
+  <div class="inconsContainer">
+    <% if(!card.contact) {%>
+    <button id="contact" onclick="addMore('Contact +94-XXXXXXXXX', 'tel','contact')" class="icons">
+      <i class='bx bxs-phone'></i>
+      <p class="iconText">Phone</p>
+    </button>
+    <% }else{ %>
+    <button disabled id="contact" onclick="addMore('Contact +94-XXXXXXXXX', 'tel','contact')" class="icons">
+      <i class='bx bxs-phone'></i>
+      <p class="iconText">Phone</p>
+    </button>
+    <% } %>
+    <% if(!card.email) {%>
+    <button id="email" onclick="addMore('example@example.com', 'email','email')" class="icons">
+      <i class='bx bxs-envelope'></i>
+      <p class="iconText">Email</p>
+    </button>
+    <% }else {%>
+    <button disabled id="email" onclick="addMore('example@example.com', 'email','email')" class="icons">
+      <i class='bx bxs-envelope'></i>
+      <p class="iconText">Email</p>
+    </button>
+    <% } %>
+    <% if(!card.address) {%>
+    <button id="address" onclick="addMore('Address', 'text','address')" class="icons">
+      <i class='bx bxs-location-plus'></i>
+      <p class="iconText">Address</p>
+    </button>
+    <% }else {%>
+    <button disabled id="address" onclick="addMore('Address', 'text','address')" class="icons">
+      <i class='bx bxs-location-plus'></i>
+      <p class="iconText">Address</p>
+    </button>
+    <% } %>
+    <% if(!card.website) {%>
+    <button id="website" onclick="addMore('https:/example.com', 'text','website')" class="icons">
+      <i class='bx bx-laptop'></i>
+      <p class="iconText">Website</p>
+    </button>
+    <% }else {%>
+    <button disabled id="website" onclick="addMore('https://example.com', 'text','website')" class="icons">
+      <i class='bx bx-laptop'></i>
+      <p class="iconText">Website</p>
+    </button>
+    <% } %>
+    <% if(!card.link) {%>
+    <button id="link" onclick="addMore('Any link', 'text','link')" class="icons">
+      <i class='bx bx-link-alt'></i>
+      <p class="iconText">Link</p>
+    </button>
+    <% }else {%>
+    <button disabled id="link" onclick="addMore('Any link', 'text','link')" class="icons">
+      <i class='bx bx-link-alt'></i>
+      <p class="iconText">Link</p>
+    </button>
+    <% } %>
+    <% if(!card.pdflink) {%>
+    <button id="pdflink" onclick="addMore('PDF link', 'text','pdflink')" class="icons">
+      <i class='bx bxs-file-pdf'></i>
+      <p class="iconText">Company Broucher</p>
+    </button>
+    <% }else {%>
+    <button disabled id="pdflink" onclick="addMore('PDF link', 'text','pdflink')" class="icons">
+      <i class='bx bxs-file-pdf'></i>
+      <p class="iconText">Company Broucher</p>
+    </button>
+    <% } %>
+    <% if(!card.twitter) {%>
+    <button id="twitter" onclick="addMore('Twitter username', 'text','twitter')" class="icons">
+      <i class='bx bxl-twitter'></i>
+      <p class="iconText">Twitter</p>
+    </button>
+    <% }else {%>
+    <button disabled id="twitter" onclick="addMore('Twitter username', 'text','twitter')" class="icons">
+      <i class='bx bxl-twitter'></i>
+      <p class="iconText">Twitter</p>
+    </button>
+    <% } %>
+    <% if(!card.instagram) {%>
+    <button id="instagram" onclick="addMore('Instagram username', 'text','instagram')" class="icons">
+      <i class='bx bxl-instagram'></i>
+      <p class="iconText">Instagram</p>
+    </button>
+    <% }else {%>
+    <button disabled id="instagram" onclick="addMore('Instagram username', 'text','instagram')" class="icons">
+      <i class='bx bxl-instagram'></i>
+      <p class="iconText">Instagram</p>
+    </button>
+    <% } %>
+    <% if(!card.linkedIn) {%>
+    <button id="linkedIn" onclick="addMore('LinkedIn username', 'text','linkedIn')" class="icons">
+      <i class='bx bxl-linkedin'></i>
+      <p class="iconText">LinkedIn</p>
+    </button>
+    <% }else {%>
+    <button disabled id="linkedIn" onclick="addMore('LinkedIn username', 'text','linkedIn')" class="icons">
+      <i class='bx bxl-linkedin'></i>
+      <p class="iconText">LinkedIn</p>
+    </button>
+    <% } %>
+    <% if(!card.facebook) {%>
+    <button id="facebook" onclick="addMore('Facebook username', 'text','facebook')" class="icons">
+      <i class='bx bxl-facebook-circle'></i>
+      <p class="iconText">Facebook</p>
+    </button>
+    <% }else {%>
+    <button disabled id="facebook" onclick="addMore('Facebook username', 'text','facebook')" class="icons">
+      <i class='bx bxl-facebook-circle'></i>
+      <p class="iconText">Facebook</p>
+    </button>
+    <% } %>
+    <% if(!card.youtube) {%>
+    <button id="youtube" onclick="addMore('Youtube channel url', 'text','youtube')" class="icons">
+      <i class='bx bxl-youtube'></i>
+      <p class="iconText">Youtube</p>
+    </button>
+    <% }else {%>
+    <button disabled id="youtube" onclick="addMore('Youtube channel url', 'text','youtube')" class="icons">
+      <i class='bx bxl-youtube'></i>
+      <p class="iconText">Youtube</p>
+    </button>
+    <% } %>
+    <% if(!card.whatsapp) {%>
+    <button id="whatsapp" onclick="addMore('Whatsapp contact +94-XXXXXXXXX', 'tel','whatsapp')" class="icons">
+      <i class='bx bxl-whatsapp'></i>
+      <p class="iconText">Whatsapp</p>
+    </button>
+    <% }else {%>
+    <button disabled id="whatsapp" onclick="addMore('Whatsapp contact +94-XXXXXXXXX', 'tel','whatsapp')" class="icons">
+      <i class='bx bxl-whatsapp'></i>
+      <p class="iconText">Whatsapp</p>
+    </button>
+    <% } %>
+    <% if(!card.snapchat) {%>
+    <button id="snapchat" onclick="addMore('Snapchat username', 'text','snapchat')" class="icons">
+      <i class='bx bxl-snapchat'></i>
+      <p class="iconText">Snapchat</p>
+    </button>
+    <% }else {%>
+    <button disabled id="snapchat" onclick="addMore('Snapchat username', 'text','snapchat')" class="icons">
+      <i class='bx bxl-snapchat'></i>
+      <p class="iconText">Snapchat</p>
+    </button>
+    <% } %>
+    <% if(!card.tiktok) {%>
+    <button id="tiktok" onclick="addMore('TikTok username', 'text','tiktok')" class="icons">
+      <i class='bx bxl-tiktok'></i>
+      <p class="iconText">TikTok</p>
+    </button>
+    <% }else {%>
+    <button disabled id="tiktok" onclick="addMore('TikTok username', 'text','tiktok')" class="icons">
+      <i class='bx bxl-tiktok'></i>
+      <p class="iconText">TikTok</p>
+    </button>
+    <% } %>
+    <% if(!card.github) {%>
+    <button id="github" onclick="addMore('Github username', 'text','github')" class="icons">
+      <i class='bx bxl-github'></i>
+      <p class="iconText">Github</p>
+    </button>
+    <% }else {%>
+    <button disabled id="github" onclick="addMore('Github username', 'text','github')" class="icons">
+      <i class='bx bxl-github'></i>
+      <p class="iconText">Github</p>
+    </button>
+    <% } %>
+    <% if(!card.yelp) {%>
+    <button id="yelp" onclick="addMore('Yelp username', 'text','yelp')" class="icons">
+      <i class='bx bxl-yelp'></i>
+      <p class="iconText">Yelp</p>
+    </button>
+    <% }else {%>
+    <button disabled id="yelp" onclick="addMore('Yelp username', 'text','yelp')" class="icons">
+      <i class='bx bxl-yelp'></i>
+      <p class="iconText">Yelp</p>
+    </button>
+    <% } %>
+    <% if(!card.venmo) {%>
+    <button id="venmo" onclick="addMore('Venmo username', 'text','venmo')" class="icons">
+      <i class='bx bxl-venmo'></i>
+      <p class="iconText">Venmo</p>
+    </button>
+    <% }else {%>
+    <button disabled id="venmo" onclick="addMore('Venmo username', 'text','venmo')" class="icons">
+      <i class='bx bxl-venmo'></i>
+      <p class="iconText">Venmo</p>
+    </button>
+    <% } %>
+    <% if(!card.discord) {%>
+    <button id="discord" onclick="addMore('Discord username', 'text','discord')" class="icons">
+      <i class='bx bxl-discord-alt'></i>
+      <p class="iconText">Discord</p>
+    </button>
+    <% }else {%>
+    <button disabled id="discord" onclick="addMore('Discord username', 'text','discord')" class="icons">
+      <i class='bx bxl-discord-alt'></i>
+      <p class="iconText">Discord</p>
+    </button>
+    <% } %>
+    <% if(!card.twitch) {%>
+    <button id="twitch" onclick="addMore('Twitch username', 'text','twitch')" class="icons">
+      <i class='bx bxl-twitch'></i>
+      <p class="iconText">Twitch</p>
+    </button>
+    <% }else {%>
+    <button disabled id="twitch" onclick="addMore('Twitch username', 'text','twitch')" class="icons">
+      <i class='bx bxl-twitch'></i>
+      <p class="iconText">Twitch</p>
+    </button>
+    <% } %>
+    <% if(!card.telegram) {%>
+    <button id="telegram" onclick="addMore('Telegram username', 'text','telegram')" class="icons">
+      <i class='bx bxl-telegram'></i>
+      <p class="iconText">Telegram</p>
+    </button>
+    <% }else {%>
+    <button disabled id="telegram" onclick="addMore('Telegram username', 'text','telegram')" class="icons">
+      <i class='bx bxl-telegram'></i>
+      <p class="iconText">Telegram</p>
+    </button>
+    <% } %>
+    <% if(!card.skype) {%>
+    <button id="skype" onclick="addMore('Skype username', 'text','skype')" class="icons">
+      <i class='bx bxl-skype'></i>
+      <p class="iconText">Skype</p>
+    </button>
+    <% }else {%>
+    <button disabled id="skype" onclick="addMore('Skype username', 'text','skype')" class="icons">
+      <i class='bx bxl-skype'></i>
+      <p class="iconText">Skype</p>
+    </button>
+    <% } %>
+    <% if(!card.xing) {%>
+    <button id="xing" onclick="addMore('Xing username', 'text','xing')" class="icons">
+      <i class='bx bxl-xing'></i>
+      <p class="iconText">Xing</p>
+    </button>
+    <% }else {%>
+    <button disabled id="xing" onclick="addMore('Xing username', 'text','xing')" class="icons">
+      <i class='bx bxl-xing'></i>
+      <p class="iconText">Xing</p>
+    </button>
+    <% } %>
+    <% if(!card.dribble) {%>
+    <button id="dribble" onclick="addMore('Drible username', 'text','dribble')" class="icons">
+      <i class='bx bxl-dribbble'></i>
+      <p class="iconText">Dribble</p>
+    </button>
+    <% }else {%>
+    <button disabled id="dribble" onclick="addMore('Drible username', 'text','dribble')" class="icons">
+      <i class='bx bxl-dribbble'></i>
+      <p class="iconText">Dribble</p>
+    </button>
+    <% } %>
+    <% if(!card.behance) {%>
+    <button id="behance" onclick="addMore('Behance username', 'text','behance')" class="icons">
+      <i class='bx bxl-behance'></i>
+      <p class="iconText">Behance</p>
+    </button>
+    <% }else {%>
+    <button disabled id="behance" onclick="addMore('Behance username', 'text','behance')" class="icons">
+      <i class='bx bxl-behance'></i>
+      <p class="iconText">Behance</p>
+    </button>
+    <% } %>
+    <% if(!card.pinterest) {%>
+    <button id="pinterest" onclick="addMore('Pinterest username', 'text','pinterest')" class="icons">
+      <i class='bx bxl-pinterest'></i>
+      <p class="iconText">Pinterest</p>
+    </button>
+    <% }else {%>
+    <button disabled id="pinterest" onclick="addMore('Pinterest username', 'text','pinterest')" class="icons">
+      <i class='bx bxl-pinterest'></i>
+      <p class="iconText">Pinterest</p>
+    </button>
+    <% } %>
+    <% if(!card.patreon) {%>
+    <button id="patreon" onclick="addMore('Patreon username', 'text','patreon')" class="icons">
+      <i class='bx bxl-patreon'></i>
+      <p class="iconText">Patreon</p>
+    </button>
+    <% }else {%>
+    <button disabled id="patreon" onclick="addMore('Patreon username', 'text','patreon')" class="icons">
+      <i class='bx bxl-patreon'></i>
+      <p class="iconText">Patreon</p>
+    </button>
+    <% } %>
+    <% if(!card.vimeo) {%>
+    <button id="vimeo" onclick="addMore('Vimeo username', 'text','vimeo')" class="icons">
+      <i class='bx bxl-vimeo'></i>
+      <p class="iconText">Vimeo</p>
+    </button>
+    <% }else {%>
+    <button disabled id="vimeo" onclick="addMore('Vimeo username', 'text','vimeo')" class="icons">
+      <i class='bx bxl-vimeo'></i>
+      <p class="iconText">Vimeo</p>
+    </button>
+    <% } %>
+    <% if(!card.appleMusic) {%>
+    <button id="appleMusic" onclick="addMore('Apple Music username', 'text','appleMusic')" class="icons">
+      <i class='bx bxl-apple'></i>
+      <p class="iconText">AppleMusic</p>
+    </button>
+    <% }else {%>
+    <button disabled id="appleMusic" onclick="addMore('Apple Music username', 'text','appleMusic')" class="icons">
+      <i class='bx bxl-apple'></i>
+      <p class="iconText">AppleMusic</p>
+    </button>
+    <% } %>
+    <% if(!card.spotify) {%>
+    <button id="spotify" onclick="addMore('Spotify username', 'text','spotify')" class="icons">
+      <i class='bx bxl-spotify'></i>
+      <p class="iconText">Spotify</p>
+    </button>
+    <% }else {%>
+    <button disabled id="spotify" onclick="addMore('Spotify username', 'text','spotify')" class="icons">
+      <i class='bx bxl-spotify'></i>
+      <p class="iconText">Spotify</p>
+    </button>
+    <% } %>
+    <% if(!card.soundCloud) {%>
+    <button id="soundCloud" onclick="addMore('SoundCloud username', 'text','soundCloud')" class="icons">
+      <i class='bx bxl-soundcloud'></i>
+      <p class="iconText">SoundCloud</p>
+    </button>
+    <% }else {%>
+    <button disabled id="soundCloud" onclick="addMore('SoundCloud username', 'text','soundCloud')" class="icons">
+      <i class='bx bxl-soundcloud'></i>
+      <p class="iconText">SoundCloud</p>
+    </button>
+    <% } %>
+  </div>
+</div>

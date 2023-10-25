@@ -1,0 +1,158 @@
+.navbarBottomContainer {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.iconContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 10px;
+    width: 11%;
+}
+
+.iconBg {
+    display: flex;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: all 0.2s ease-in-out;
+}
+
+.iconBg:hover {
+    background-color: #f2f2f2;
+}
+
+.iconBg i {
+    font-size: 30px;
+}
+
+.iconContainer p {
+    font-size: 10px;
+}
+
+.searchInput {
+    width: 95%;
+    padding: 9px 0;
+    padding-left: 10px;
+    border-radius: 5px;
+    outline: 0;
+    border: none;
+    box-shadow: 0px 3px 9px 0px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 3px 9px 0px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 3px 9px 0px rgba(0, 0, 0, 0.3);
+}
+
+.cardsContainer {
+    margin-left: 10px;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.addCard {
+    width: 198px;
+    height: 246px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    border: 2px dotted blueviolet;
+    text-decoration: none;
+    color: blueviolet;
+    transition: all 0.1s ease-in-out;
+    cursor: pointer;
+}
+
+.addCard:hover {
+    transform: scale(105%);
+}
+
+.addCard i {
+    font-size: 50px;
+}
+
+.textWrapper {
+    padding: 0 7px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.cardText {
+    font-size: 20px;
+    font-weight: 400;
+    width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+}
+
+.customCard {
+    width: 198px;
+    height: 246px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    text-decoration: none;
+    color: blueviolet;
+    transition: all 0.1s ease-in-out;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+    box-shadow: 0px 3px 9px 0px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 3px 9px 0px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 3px 9px 0px rgba(0, 0, 0, 0.3);
+}
+
+.customCard:hover {
+    transform: scale(105%);
+}
+
+
+.bg {
+    height: 160px;
+    width: 198px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.svgContainer {
+    margin-top: -1px;
+}
+
+.cardImgStyles {
+    height: 160px;
+    width: 198px;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+@media(max-width: 990px) {
+    .cardsContainer {
+        margin-left: 10px;
+        margin-top: 15px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,104 @@
+.customRow {
+    display: flex;
+    flex-direction: row;
+}
+
+.columns {
+    width: 40%;
+    padding-left: 15px;
+}
+
+.btnTabs {
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.47);
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.47);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.47);
+    margin-bottom: 15px;
+}
+
+.btnTop {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.iconText {
+    display: flex;
+    align-items: center;
+}
+
+.tabHeading {
+    margin: 0;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.upgradeBtn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    padding: 2px 7px;
+    transition: 0.2s all ease-in-out;
+    border-radius: 2px;
+    border: none;
+}
+
+.upgradeBtn:hover {
+    background-color: aliceblue;
+}
+
+.upgardeBtnStyles {
+    margin: 0;
+    text-transform: uppercase;
+    font-size: small;
+}
+
+.subscriptionPackage {
+    margin: 0;
+    margin-top: 40px;
+}
+
+
+.bottomTab {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    margin-top: 40px;
+    background: transparent;
+    border: none;
+}
+
+.usernameContainer {
+    padding-left: 10px;
+}
+
+.username {
+    margin: 0;
+    font-size: 22px;
+}
+
+.userSub {
+    margin: 0;
+}
+
+.accountTabs {
+    margin: 0;
+}
+
+@media(max-width: 920px) {
+    .customRow {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .columns {
+        width: 95%;
+        padding-left: 15px;
+    }
+}

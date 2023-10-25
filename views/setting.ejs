@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link href="/stylesheets/canvas.css" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/settings.css" rel="stylesheet" type="text/css">
+  <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <title>Setting</title>
+</head>
+
+<body>
+  <div class="canvas">
+    <%- include('partials/canvassidenavbar') %>
+    <div class="topNavbar">
+      <%- include('partials/canvasnavbar') %>
+      <%- include('partials/flash') %>
+      <%- include('partials/offcanvas') %>
+      <div class="customRow">
+        <div class="columns">
+          <div class="btnTabs">
+            <div class="btnTop">
+              <div class="iconText">
+                <i class='bx bxs-credit-card'></i>
+                <h2 class="tabHeading">Subscription</h2>
+              </div>
+              <% if(user.subscription.toLowerCase() === 'free') {%>
+              <a href="/payform?package=professional" class="upgradeBtn">
+                <i class='bx bx-plus'></i>
+                <p class="upgardeBtnStyles">upgrade plan</p>
+              </a>
+              <% }else{ %>
+              <a class="upgradeBtn">
+                <p class="upgardeBtnStyles">Plan Upgraded</p>
+              </a>
+              <% } %>
+            </div>
+            <p class="subscriptionPackage">Digibiz <span>
+                <%= user.subscription %>
+              </span></p>
+          </div>
+
+          <div class="btnTabs">
+            <div class="btnTop">
+              <div class="iconText">
+                <i class='bx bxs-user'></i>
+                <h2 class="tabHeading">Profile</h2>
+              </div>
+            </div>
+            <div type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop" class="bottomTab">
+              <div class="iconText">
+                <i style="font-size: 30px; color: blueviolet" class='bx bxs-user-circle'></i>
+                <div class="usernameContainer">
+                  <h2 class="username">
+                    <%= user.username %>
+                  </h2>
+                  <p class="userSub">
+                    <%= user.subscription %>
+                  </p>
+                </div>
+              </div>
+              <i style="font-size: 25px;" class='bx bx-chevron-right'></i>
+            </div>
+          </div>
+        </div>
+        <div class="columns">
+          <div class="btnTabs">
+            <div class="btnTop">
+              <div class="iconText">
+                <i class='bx bxs-user-account'></i>
+                <h2 class="tabHeading">Account</h2>
+              </div>
+            </div>
+            <!-- <div class="bottomTab">
+              <div class="iconText">
+                <p class="accountTabs">Resend Verification Email</p>
+              </div>
+              <i style="font-size: 25px;" class='bx bx-chevron-right'></i>
+            </div> -->
+            <!-- <div class="bottomTab">
+              <div class="iconText">
+                <p class="accountTabs">Reset Your Password</p>
+              </div>
+              <i style="font-size: 25px;" class='bx bx-chevron-right'></i>
+            </div> -->
+            <div class="bottomTab">
+              <form method="post" action="/user/delete?_method=DELETE">
+                <button style="background-color: transparent; border: none;" class="iconText">
+                  <p class="accountTabs">Delete Account</p>
+                </button>
+              </form>
+              <i style="font-size: 25px;" class='bx bx-chevron-right'></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  <script>
+    (() => {
+      'use strict'
+
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      const forms = document.querySelectorAll('#usernameForm')
+
+      // Loop over them and prevent submission
+      Array.from(forms)
+        .forEach(form => {
+          form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+              event.preventDefault()
+              event.stopPropagation()
+            }
+
+            form.classList.add('was-validated')
+          }, false)
+        })
+    })()
+
+  </script>
+  <script src="/javascripts/canvas.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,208 @@
+<form class="dublicateCardForm" action="/cards" method="post" novalidate>
+  <div class="newCardHead">
+    <a href="/card/<%= card._id %> "><i class='bx bx-arrow-back back'></i></a>
+    <input class="cardName form-control" type="text" name="cardName" placeholder="Card name" value="<%= card.cardName %> Copy" required />
+  </div>
+  <div id="customstyles" class="customCardStyles card">
+    <label id="uploadImage" for="imageUpload">
+      <% if(card.image.url) {%>
+      <img class="imgStyles" id="output" src="<%= card.image.url %>" />
+      <% } else{%>
+      <img class="imgStyles" src="/images/thumbnail.jpg" id="output" />
+      <% } %>
+    </label>
+    <input onchange="loadFile(event)" name="image" id="imageUpload" type="file" />
+    <svg style="width: 100%;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+      <path id="path" fill="<%= card.color %>" fill-opacity="1" d="M0,192L60,181.3C120,171,240,149,360,170.7C480,192,600,256,720,256C840,256,960,192,1080,165.3C1200,139,1320,149,1380,154.7L1440,160L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z">
+      </path>
+    </svg>
+    <div class="colorContainer">
+      <% if(user.subscription !=='Free' ){ %>
+      <input onchange="addValuePro(event)" value="<%= card.color %>" class="colorsInput" type="color" />
+
+      <% } %>
+      <div onclick="addValue('#8F60DE')" id="color1" style="background-color: #8F60DE;" class="colors" role="button"></div>
+      <div onclick="addValue('#628AF8')" id="color2" style="background-color: #628AF8;" class="colors" role="button"></div>
+      <div onclick="addValue('#6C31CD')" id="color3" style="background-color: #6C31CD;" class="colors" role="button"></div>
+      <div onclick="addValue('#6DD3C7')" id="color4" style="background-color: #6DD3C7;" class="colors" role="button"></div>
+      <div onclick="addValue('#3BB55D')" id="color5" style="background-color: #3BB55D;" class="colors" role="button"></div>
+      <div onclick="addValue('#FFC631')" id="color6" style="background-color: #FFC631;" class="colors" role="button"></div>
+      <div onclick="addValue('#FF8C39')" id="color7" style="background-color: #FF8C39;" class="colors" role="button"></div>
+      <div onclick="addValue('#EA3A2E')" id="color8" style="background-color: #EA3A2E;" class="colors" role="button"></div>
+      <div onclick="addValue('#EE85DD')" id="color9" style="background-color: #EE85DD;" class="colors" role="button"></div>
+      <div onclick="addValue('#4A4A4A')" id="color10" style="background-color: #4A4A4A;" class="colors" role="button"></div>
+      <input id="silentSubmit" class="silentInput" type="text" value="<%= card.color  %>" name="color" />
+    </div>
+    <div class="card-body">
+      <h5 id="fullname" class="card-title">Full name<i id="rotate" class='bx bxs-chevron-right'></i></h5>
+      <div id="fullnameDropdown" class="fullnameDropdown">
+        <input class="form-control" value="<%= card.firstName %>" type="text" placeholder="First name" name="firstName" id="fullnameInputs" required />
+        <input value="<%= card.lastName %>" type="text" placeholder="Last name" name="lastName" id="fullnameInputs" />
+        <input value="<%= card.accreditations %>" type="text" placeholder="Accreditations" name="accreditations" id="fullnameInputs" />
+        <input value="<%= card.prefferedName %>" type="text" placeholder="Preffered name" name="prefferedName" id="fullnameInputs" />
+      </div>
+    </div>
+    <ul id="expandInputs" class="list-group list-group-flush">
+      <li class="list-group-item">
+        <textarea name="title" class="textBox" placeholder="Title"><%= card.title %></textarea>
+      </li>
+      <li class="list-group-item">
+        <input value="<%= card.department %>" type="text" placeholder="Department" id="bottomInputs" name="department" />
+      </li>
+      <li class="list-group-item">
+        <input value="<%= card.company %>" type="text" placeholder="Company" id="bottomInputs" name="company" />
+      </li>
+      <li class="list-group-item">
+        <textarea name="headline" class="textBox" placeholder="Headline"><%= card.headline %></textarea>
+      </li>
+      <% if(card.contact){ %>
+      <li class="list-group-item">
+        <input id="bottomInputs" name="contact" value="<%= card.contact %>" placeholder="Contact +94-XXXXXXXXX" />
+      </li>
+      <% } %>
+      <% if(card.email){ %>
+      <li class="list-group-item">
+        <input id="bottomInputs" name="email" value="<%= card.email %>" placeholder="example@example.com" />
+      </li>
+      <% } %>
+      <% if(card.address){ %>
+      <li class="list-group-item">
+        <input id="bottomInputs" name="address" value="<%= card.address %>" placeholder="Address" />
+      </li>
+      <% } %>
+      <% if(card.website){ %>
+      <li class="list-group-item">
+        <input id="bottomInputs" name="website" value="<%= card.website %>" placeholder="https://example.com" />
+      </li>
+      <% } %>
+      <% if(card.link){ %>
+      <li class="list-group-item">
+        <input id="bottomInputs" name="link" value="<%= card.link %>" placeholder="Any link" />
+      </li>
+      <% } %>
+      <% if(card.twitter){ %>
+      <li class="list-group-item">
+        <input id="bottomInputs" name="twitter" value="<%= card.twitter %>" placeholder="Twitter username" />
+      </li>
+      <% } %>
+      <% if(card.instagram){ %>
+      <li class="list-group-item">
+        <input id="bottomInputs" name="instagram" value="<%= card.instagram %>" placeholder="Instagram username" />
+      </li>
+      <% } %>
+      <% if(card.linkedIn){ %>
+      <li class="list-group-item">
+        <input id="bottomInputs" name="linkedIn" value="<%= card.linkedIn %>" placeholder="linkedIn username" />
+      </li>
+      <% } %>
+      <% if(card.facebook){ %>
+      <li class="list-group-item">
+        <input id="bottomInputs" name="facebook" value="<%= card.facebook %>" placeholder="Facebook username" />
+      </li>
+      <% } %>
+      <% if(card.youtube){ %>
+      <li class="list-group-item">
+        <input id="bottomInputs" name="youtube" value="<%= card.youtube %>" placeholder="Youtube channel url" />
+      </li>
+      <% } %>
+      <% if(card.whatsapp){ %>
+      <li class="list-group-item">
+        <input id="bottomInputs" name="whatsapp" value="<%= card.whatsapp %>" placeholder="Whatsapp contact +94-XXXXXXXXX" />
+      </li>
+      <% } %>
+      <% if(card.snapchat){ %>
+      <li class="list-group-item">
+        <input id="bottomInputs" name="snapchat" value="<%= card.snapchat %>" placeholder="Snapchat username" />
+      </li>
+      <% } %>
+      <% if(card.tiktok){ %>
+      <li class="list-group-item">
+        <input id="bottomInputs" name="tiktok" value="<%= card.tiktok %>" placeholder="Tiktok username" />
+      </li>
+      <% } %>
+      <% if(card.github){ %>
+      <li class="list-group-item">
+        <input id="bottomInputs" name="github" value="<%= card.github %>" placeholder="Github username" />
+      </li>
+      <% } %>
+      <% if(card.yelp){ %>
+      <li class="list-group-item">
+        <input id="bottomInputs" name="yelp" value="<%= card.yelp %>" placeholder="Yelp username" />
+      </li>
+      <% } %>
+      <% if(card.venmo){ %>
+      <li class="list-group-item">
+        <input id="bottomInputs" name="venmo" value="<%= card.venmo %>" placeholder="Venmo username" />
+      </li>
+      <% } %>
+      <% if(card.discord){ %>
+      <li class="list-group-item">
+        <input id="bottomInputs" name="discord" value="<%= card.discord %>" placeholder="Discord username" />
+      </li>
+      <% } %>
+      <% if(card.twitch){ %>
+      <li class="list-group-item">
+        <input id="bottomInputs" name="twitch" value="<%= card.twitch %>" placeholder="Twitch username" />
+      </li>
+      <% } %>
+      <% if(card.telegram){ %>
+      <li class="list-group-item">
+        <input id="bottomInputs" name="telegram" value="<%= card.telegram %>" placeholder="Telegram username" />
+      </li>
+      <% } %>
+      <% if(card.skype){ %>
+      <li class="list-group-item">
+        <input id="bottomInputs" name="skype" value="<%= card.skype %>" placeholder="Skype username" />
+      </li>
+      <% } %>
+      <% if(card.xing){ %>
+      <li class="list-group-item">
+        <input id="bottomInputs" name="xing" value="<%= card.xing %>" placeholder="Xing username" />
+      </li>
+      <% } %>
+      <% if(card.dribble){ %>
+      <li class="list-group-item">
+        <input id="bottomInputs" name="dribble" value="<%= card.dribble %>" placeholder="Dribble username" />
+      </li>
+      <% } %>
+      <% if(card.behance){ %>
+      <li class="list-group-item">
+        <input id="bottomInputs" name="behance" value="<%= card.behance %>" placeholder="Behance username" />
+      </li>
+      <% } %>
+      <% if(card.pinterest){ %>
+      <li class="list-group-item">
+        <input id="bottomInputs" name="pinterest" value="<%= card.pinterest %>" placeholder="Pinterest username" />
+      </li>
+      <% } %>
+      <% if(card.patreon){ %>
+      <li class="list-group-item">
+        <input id="bottomInputs" name="patreon" value="<%= card.patreon %>" placeholder="Patreon username" />
+      </li>
+      <% } %>
+      <% if(card.vimeo){ %>
+      <li class="list-group-item">
+        <input id="bottomInputs" name="vimeo" value="<%= card.vimeo %>" placeholder="Vimeo username" />
+      </li>
+      <% } %>
+      <% if(card.appleMusic){ %>
+      <li class="list-group-item">
+        <input id="bottomInputs" name="appleMusic" value="<%= card.appleMusic %>" placeholder="Apple Music username" />
+      </li>
+      <% } %>
+      <% if(card.spotify){ %>
+      <li class="list-group-item">
+        <input id="bottomInputs" name="spotify" value="<%= card.spotify %>" placeholder="Spotify username" />
+      </li>
+      <% } %>
+      <% if(card.soundCloud){ %>
+      <li class="list-group-item">
+        <input id="bottomInputs" name="soundCloud" value="<%= card.soundCloud %>" placeholder="SoundCloud username" />
+      </li>
+      <% } %>
+    </ul>
+    <div class="card-body stickyBtn">
+      <button style="background-color: <%= card.color%>;" id="submit" class="submitBtn" type="submit">Save</button>
+    </div>
+  </div>
+</form>

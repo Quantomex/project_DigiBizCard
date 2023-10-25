@@ -1,0 +1,26 @@
+<nav id="navbar-example2" class="navbar bg-body-tertiary mb-3">
+  <a class="navbar-brand mx-3" href="#">Cards</a>
+  <ul class="nav nav-pills">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle pb-0 pt-0" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+        <%= user.username %>
+      </a>
+      <h6 style="text-transform: capitalize;" class="ps-3 card-subtitle mb-2 text-muted"><%= user.subscription %></h6>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="/settings">Setting</a></li>
+        <li><a class="dropdown-item" href="/contactform">Contact Support</a></li>
+        <!-- <li><a class="dropdown-item" href="#scrollspyHeading5">Send Feedback</a></li> -->
+        <!-- <li><a class="dropdown-item" href="#scrollspyHeading5">Tips</a></li> -->
+        <!-- <li>
+          <hr class="dropdown-divider">
+        </li> -->
+        <!-- <li><a class="dropdown-item" href="#scrollspyHeading5">Privacy Policy</a></li> -->
+        <li>
+          <hr class="dropdown-divider">
+        </li>
+        <li><a class="dropdown-item" href="/logout">Logout</a></li>
+
+      </ul>
+    </li>
+  </ul>
+</nav>

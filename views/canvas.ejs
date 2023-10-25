@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link href="/stylesheets/canvas.css" rel="stylesheet" type="text/css">
+  <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <title>Cards</title>
+</head>
+
+<body>
+  <div class="canvas">
+    <%- include('partials/canvassidenavbar') %>
+    <div class="topNavbar">
+      <%- include('partials/canvasnavbar') %>
+      <div class="navbarBottomContainer mb-3">
+        <input onkeyup="search()" id="search-item" class="searchInput" type="text" name="search" value="" placeholder="Search Cards" />
+        <!-- <div class="iconContainer">
+          <a href="/cards/new" class="iconBg">
+            <i class='bx bx-plus'></i>
+          </a>
+          <a class="iconBg">
+            <i class='bx bxs-download'></i>
+          </a>
+          <a class="iconBg">
+            <i class='bx bx-qr'></i>
+          </a>
+        </div> -->
+      </div>
+      <%- include('partials/flash') %>
+      <div id="card-list" class="cardsContainer">
+        <% if(user.subscription.toLowerCase()=='free' && user.cards.length>= 2){ %>
+        <a id="liveToastBtn" class="addCard">
+          <i class='bx bx-plus'></i>
+          <h3 class="cardText">Add Card</h3>
+        </a>
+        <%- include('partials/toast') %>
+        <% }else{ %>
+        <a href="/cards/new" class="addCard">
+          <i class='bx bx-plus'></i>
+          <h3 class="cardText">Add Card</h3>
+        </a>
+        <% } %>
+        <% for (let card of user.cards){ %>
+        <a href="/card/<%=card._id%>" class="customCard">
+          <% if (!card.image.filename){ %>
+          <div style="background-color: <%=card.color%>;" class="bg"></div>
+          <% }else{ %>
+          <img class="cardImgStyles" src="<%= card.image.url %>" />
+          <% } %>
+          <div class="svgContainer">
+            <svg style="width: 100%;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+              <path fill="<%=card.color%>" fill-opacity="1" d="M0,192L60,181.3C120,171,240,149,360,170.7C480,192,600,256,720,256C840,256,960,192,1080,165.3C1200,139,1320,149,1380,154.7L1440,160L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z">
+              </path>
+            </svg>
+          </div>
+          <div class="textWrapper">
+            <h3 class="cardText">
+              <%= card.cardName %>
+            </h3>
+          </div>
+        </a>
+        <% } %>
+
+      </div>
+    </div>
+
+
+    <!--  -->
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  <script src="/javascripts/canvas.js"></script>
+</body>
+
+</html>

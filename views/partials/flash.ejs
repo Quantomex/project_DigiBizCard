@@ -1,0 +1,20 @@
+<% if(success && success.length){ %>
+<div class="text-center alert alert-success alert-dismissible fade show w-100" role="alert">
+  <%= success %>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+<% } %>
+<% if(error && error.length){ %>
+<div class="text-center alert alert-danger alert-dismissible fade show w-100" role="alert">
+  <%= error %>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+<% } %>
+<% if(trialEnd && trialEnd.length) {%>
+<div class="text-center alert alert-danger alert-dismissible fade show w-100" role="alert">
+  <%= trialEnd %>. To view our plans <a href="/pricing">click here</a> or to Delete your account <form style="display: inline;" action="/user/delete?_method=DELETE" method="post"><button type="submit" style="background-color: transparent; border: none;">
+      <div style="color: blue; text-decoration: underline;">click me</div>
+    </button></form>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+<% } %>

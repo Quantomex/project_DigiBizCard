@@ -1,0 +1,16 @@
+<div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop"
+    aria-labelledby="staticBackdropLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="staticBackdropLabel">Change Username</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <%- include('flash') %>
+            <form method="post" action="/username" id="usernameForm" novalidate>
+                <label for="username" class="form-label">Enter New Username</label>
+                <input required class="form-control" type="text" id="username" name="username"
+                    value="<%= user.username %>" placeholder="Username" />
+                <button class="btn btn-primary mt-3 w-100">Save</button>
+            </form>
+    </div>
+</div>

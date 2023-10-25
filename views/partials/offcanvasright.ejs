@@ -1,0 +1,124 @@
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasRightLabel">Card Settings</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <form id="form" novalidate method="post" action="/card/setting/<%= card._id %>" class="validate offcanvas-body">
+    <div class="accordion mb-2">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Pause card
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <div class="form-check form-switch">
+              <% if(card.pauseCard==true) {%>
+              <input name="pauseCard" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+              <% } else{%>
+              <input name="pauseCard" class="form-check-input" type="checkbox" role="switch" checked id="flexSwitchCheckDefault">
+              <% } %>
+
+              <label class="form-check-label" for="flexSwitchCheckDefault">
+                Active
+              </label>
+            </div>
+            <p style="font-size: 13px;">If you pause your digital business card, its link and QR code will
+              become inactive until you
+              turn your card back on.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="accordion mb-2">
+      <div class="accordion-item">
+        <% if(user.subscription.toLowerCase()==='free' ) {%>
+        <h2 class="accordion-header" id="headingThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            Personalized Link
+          </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            Upgrade your account to enjoy this feature.
+          </div>
+        </div>
+        <% }else{ %>
+        <h2 class="accordion-header" id="headingThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            Personalized Link
+          </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <label class="form-label">https://digibizcard.lk/view/your-personal-text/XXXXXX</label>
+            <input id="customLink" value="<%= card.personalLink %>" class="form-control mb-3" type="text" name="personalLink" />
+            <div class="invalid-feedback">
+              Spaces are not allowed
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </div>
+    <div class="accordion mb-2">
+      <div class="accordion-item">
+        <% if(user.subscription.toLowerCase()==='free' ) {%>
+        <h2 class="accordion-header" id="headingFour">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+            Renew Qr Code
+          </button>
+
+        </h2>
+        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            Upgrade your account to enjoy this feature.
+          </div>
+        </div>
+        <% } else{%>
+        <h2 class="accordion-header" id="headingFour">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+            Renew Qr Code
+          </button>
+
+        </h2>
+        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <p>If you renew the Qr Code of your card, the current QR code will no longer work.
+            </p>
+            <p>
+              Confirm that you would like to renew your Qr Code by typing "renew" in the box below.
+            </p>
+            <p>
+              This cannot be undone.
+            </p>
+            <input id="inputRenew" name="renew" type="text" class="form-control mb-3" placeholder="Type in 'renew" />
+            <a id="renewLink" style="color: white;" class="renewBtn" href="/renew/<%= card._id %>">
+              Renew
+            </a>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </div>
+    <!-- <div class="accordion mb-2">
+        <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFive">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                        Pause card
+                    </button>
+                </h2>
+                <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    <button type="submit" style="background-color: aqua;" class="cardSettingBtn">Save</button>
+  </form>
+</div>

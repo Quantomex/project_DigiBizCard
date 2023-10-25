@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link href="/stylesheets/cardshow.css" rel="stylesheet" />
+  <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <title>
+    <%= card.fullname %> || Digibiz
+  </title>
+</head>
+<style>
+  body {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+  }
+
+  .buttonsContainerBottom {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cardFrontContainer {
+    margin: 0;
+    margin-bottom: 100px;
+  }
+
+  .addContactBtn {
+    padding: 10px 25px;
+    font-size: 18px;
+    border-radius: 25px;
+    border: none;
+    background-color: blueviolet;
+    color: white;
+    text-transform: uppercase;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .addContactBtn:hover {
+    transform: scale(1.1);
+  }
+
+  .lastLink {
+    bottom: 0;
+    text-decoration: none;
+    color: white;
+    background-color: rgba(137, 43, 226, 0.563);
+    width: 400px;
+    text-align: center;
+    font-size: 12px;
+    padding: 10px 0;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    margin-top: 15px;
+  }
+
+  .textContainer {
+    width: auto;
+  }
+
+</style>
+
+<body>
+  <%- include('partials/flash') %>
+  <%- include('partials/cardfront')  %>
+  <div class="buttonsContainerBottom">
+    <% if(user !== undefined) {%>
+    <% if(card.author.toString() === user._id.toString()) {%>
+    <button class="addContactBtn">
+      <div class="btnInsider">
+        <i class='bx bxs-contact'></i>
+        this is your card
+      </div>
+    </button>
+    <% } else{%>
+    <form method="post" action="/add/contact/<%= card._id %>">
+      <button type="submit" class="addContactBtn">
+        <div class="btnInsider">
+          <i class='bx bxs-contact'></i>
+          Add to contact
+        </div>
+      </button>
+    </form>
+    <% } %>
+    <% } else{%>
+    <a href="/download/vcf/<%= card._id %>" style="text-decoration: none;" class="addContactBtn" href="/login">
+      <div class="btnInsider">
+        <i class="bx bxs-contact"></i>
+        save this contact
+      </div>
+    </a>
+    <% } %>
+
+    <a class="lastLink" href="/">
+      Click here to create a digital business card from DigiBizCard
+    </a>
+  </div>
+</body>
+
+</html>

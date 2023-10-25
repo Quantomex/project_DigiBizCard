@@ -1,0 +1,45 @@
+.contactContainer {
+    width: 95%;
+    height: 500px;
+    padding: 10px;
+}
+
+.rowTabs {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.rowTabs:hover {
+    transition: all 0.2s ease-in-out;
+    background-color: rgb(226, 224, 228);
+}
+
+.rowTabs i {
+    font-size: 40px;
+    margin-right: 10px;
+    color: blueviolet;
+}
+
+.contactFullname {
+    margin: 0;
+    font-size: 18px;
+}
+
+.departmentText {
+    margin: 0;
+    margin-top: -5px;
+    font-size: 16px;
+}
+
+.offCanvasIcon {
+    text-decoration: none;
+    color: black;
+}
+
+.offCanvasIcon i {
+    font-size: 25px;
+    margin-right: 10px;
+}
